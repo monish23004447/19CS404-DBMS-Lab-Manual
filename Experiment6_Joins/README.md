@@ -54,123 +54,221 @@ ON table1.column = table2.column;
 
 **Question 1**
 --
--- Paste Question 1 here
+-- SQL statement to generate a report with customer name, city, order number, order date, order amount, salesperson name, and commission to determine if any of the existing customers have not placed orders or if they have placed orders through their salesman or by themselves.
 
 ```sql
--- Paste your SQL code below for Question 1
+--
+SELECT 
+    c.cust_name,
+    c.city,
+    o.ord_no,
+    o.ord_date,
+    o.purch_amt AS "Order Amount",
+    s.name,
+    s.commission
+FROM customer c
+LEFT JOIN orders o
+ON c.customer_id = o.customer_id
+LEFT JOIN salesman s
+ON o.salesman_id = s.salesman_id;
+
 ```
 
 **Output:**
 
-![Output1](output.png)
+![image](https://github.com/user-attachments/assets/7d0836da-208b-487d-aa09-946621eaf04d)
 
 **Question 2**
 ---
--- Paste Question 2 here
+--Write the SQL query that achieves the selection of the "name" column from the "salesman" table (aliased as "s"), with a left join on the "salesman_id" column and a condition filtering for customers in the city 'London'.
 
 ```sql
--- Paste your SQL code below for Question 2
+--
+SELECT s.name
+FROM salesman s
+LEFT JOIN customer c
+ON s.salesman_id = c.salesman_id
+WHERE c.city = 'London';
+
 ```
 
 **Output:**
 
-![Output2](output.png)
+![image](https://github.com/user-attachments/assets/641bfa45-3dba-4147-b2ee-ca6d7345e3f5)
+
 
 **Question 3**
 ---
--- Paste Question 3 here
+-- From the following tables write a SQL query to find those orders where the order amount exists between 500 and 2000. Return ord_no, purch_amt, cust_name, city.
 
 ```sql
--- Paste your SQL code below for Question 3
+--
+SELECT o.ord_no, o.purch_amt, c.cust_name, c.city
+FROM orders o
+JOIN customer c
+ON o.customer_id = c.customer_id
+WHERE o.purch_amt BETWEEN 500 AND 2000;
+
 ```
 
 **Output:**
+![image](https://github.com/user-attachments/assets/772b9f20-d491-4c12-904f-44a4222af67b)
 
-![Output3](output.png)
+
 
 **Question 4**
 ---
--- Paste Question 4 here
-
+-- 
+From the following tables write a SQL query to display the customer name, customer city, grade, salesman, salesman city. The results should be sorted by ascending customer_id.  
 ```sql
--- Paste your SQL code below for Question 4
+--
+SELECT 
+    c.cust_name, 
+    c.city AS city, 
+    c.grade, 
+    s.name AS Salesman, 
+    s.city AS city
+FROM 
+    customer c
+JOIN 
+    salesman s 
+    ON c.salesman_id = s.salesman_id
+ORDER BY 
+    c.customer_id ASC;
+
 ```
 
 **Output:**
 
-![Output4](output.png)
+![image](https://github.com/user-attachments/assets/bc76f7ba-0ef5-41f9-b241-ab82adafdc28)
 
 **Question 5**
 ---
--- Paste Question 5 here
+-- From the following tables write a SQL query to locate those salespeople who do not live in the same city where their customers live and have received a commission of more than 12% from the company. Return Customer Name, customer city, Salesman, salesman city, commission.  
 
 ```sql
--- Paste your SQL code below for Question 5
+--
+SELECT 
+    c.cust_name AS "Customer Name",
+    c.city AS city,
+    s.name AS Salesman,
+    s.city AS city,
+    s.commission
+FROM customer c
+JOIN salesman s
+ON c.salesman_id = s.salesman_id
+WHERE c.city <> s.city
+AND s.commission > 0.12;
+
 ```
 
 **Output:**
 
-![Output5](output.png)
+![image](https://github.com/user-attachments/assets/4a66ef3f-7ea1-4eb6-8dd5-ffcfdc0a7aa9)
+
 
 **Question 6**
 ---
--- Paste Question 6 here
-
+-- Write the SQL query that achieves the selection of the first name from the "patients" table (aliased as "patient_name") and all columns from the "appointments" table (aliased as "a"), with an inner join on the "patient_id" column.
 ```sql
--- Paste your SQL code below for Question 6
+--
+SELECT 
+    p.first_name AS patient_name,
+    a.*
+FROM patients p
+INNER JOIN appointments a
+ON p.patient_id = a.patient_id;
+
 ```
 
 **Output:**
 
-![Output6](output.png)
+![image](https://github.com/user-attachments/assets/00f18ef1-1446-4dee-999f-f64bf32945f2)
+
 
 **Question 7**
 ---
--- Paste Question 7 here
-
+-- 
+Write a SQL statement to make a report with customer name, city, order number, order date, and order amount in ascending order according to the order date to determine whether any of the existing customers have placed an order or not.
 ```sql
--- Paste your SQL code below for Question 7
+--
+SELECT 
+    c.cust_name, 
+    c.city, 
+    o.ord_no, 
+    o.ord_date, 
+    o.purch_amt AS "Order Amount"
+FROM customer c
+LEFT JOIN orders o
+ON c.customer_id = o.customer_id
+ORDER BY o.ord_date ASC;
+
 ```
 
 **Output:**
 
-![Output7](output.png)
+![image](https://github.com/user-attachments/assets/9eb9b40b-b81c-4d52-8e06-206a1b121f24)
 
 **Question 8**
 ---
--- Paste Question 8 here
+-- 
+Write the SQL query that achieves the selection of the first name from the "patients" table (aliased as "patient_name") and the first name from the "doctors" table (aliased as "doctor_name"), with an inner join on the "doctor_id" column and a condition filtering for patients with a null discharge date.
 
 ```sql
--- Paste your SQL code below for Question 8
+--
+SELECT 
+    p.first_name AS patient_name,
+    d.first_name AS doctor_name
+FROM patients p
+INNER JOIN doctors d
+ON p.doctor_id = d.doctor_id
+WHERE p.discharge_date IS NULL;
+
 ```
 
 **Output:**
 
-![Output8](output.png)
+![image](https://github.com/user-attachments/assets/51f300f9-3cd4-40cb-9caf-ecfb5d872051)
+
 
 **Question 9**
 ---
--- Paste Question 9 here
-
+-- Write the SQL query that accomplishes the selection of all columns from the "patients" table and the first name of doctors from the "doctors" table, with an inner join on the "doctor_id" column.
 ```sql
--- Paste your SQL code below for Question 9
+--
+SELECT 
+    p.*, 
+    d.first_name AS doctor_name
+FROM patients p
+INNER JOIN doctors d
+ON p.doctor_id = d.doctor_id;
+
 ```
 
 **Output:**
 
-![Output9](output.png)
+![image](https://github.com/user-attachments/assets/730b7a7d-51b3-4cab-ab76-1f2dbddf7415)
+
 
 **Question 10**
 ---
--- Paste Question 10 here
+-- From the following tables write a SQL query to find the salesperson(s) and the customer(s) he represents. Return Customer Name, city, Salesman, commission.
 
 ```sql
--- Paste your SQL code below for Question 10
+-- 
+SELECT c.cust_name AS "Customer Name",
+       c.city AS city,
+       s.name AS Salesman,
+       s.commission
+FROM customer c
+JOIN salesman s ON c.salesman_id = s.salesman_id;
+
 ```
 
 **Output:**
 
-![Output10](output.png)
+![image](https://github.com/user-attachments/assets/7815f09c-9f66-4c88-a38c-4bcd6574fa3e)
+
 
 
 ## RESULT
