@@ -51,7 +51,8 @@ Design a database for patient management, appointments, medical records, and bil
  Hospital 
 
 ## ER Diagram:
-file:///C:/Users/madhu/Downloads/Madhumitha.Y_HospitalERDiagram.pdf
+![image](https://github.com/user-attachments/assets/d9dffd63-c38a-4af5-aa1c-c76d650ac6a6)
+
 
 ## Entities and Attributes:
 ...
