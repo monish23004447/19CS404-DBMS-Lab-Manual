@@ -194,7 +194,7 @@ where city!="Noida";
 
 **Output:**
 
-![Uploading image.png…]()
+![image](https://github.com/user-attachments/assets/82d47b52-bfd7-4824-b647-97cf0f17e6b0)
 
 
 
