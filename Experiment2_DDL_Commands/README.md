@@ -110,7 +110,8 @@ CREATE TABLE Table_Name (
 Table attributes are EmployeeID, Name, Department, Salary
 
 ```sql
--- insert into Employee(EmployeeID,Name,Department,Salary)
+--
+ insert into Employee(EmployeeID,Name,Department,Salary)
 select EmployeeID,Name,Department,Salary
 from Former_employees;
 ```
@@ -125,7 +126,8 @@ from Former_employees;
 -- Write a SQL Query  to add attribute Date_of_joining as Date and rename the attribute job_title as Designation in the table 'Employees'
 
 ```sql
--- Alter table Employees
+--
+ Alter table Employees
 add column Date_of_joining Date;
 Alter table Employees
 rename column job_title to Designation;
@@ -146,7 +148,8 @@ Address as TEXT
 
 
 ```sql
--- create table Locations(
+--
+ create table Locations(
 LocationID INTEGER,
 LocationName TEXT,
 Address TEXT);
@@ -167,7 +170,8 @@ OrderID as INTEGER should be a foreign key referencing Orders(OrderID).
 
 
 ```sql
--- create table Shipments(
+--
+create table Shipments(
 ShipmentID INTEGER Primary Key,
 ShipmentDate DATE,
 SupplierID INTEGER,
@@ -186,7 +190,8 @@ foreign key (OrderID) references Orders(OrderID));
 -- Write a SQL query to Rename the "city" column to "location" in the "customer" table.
 
 ```sql
--- Alter table customer
+--
+Alter table customer
 Rename column city to location;
 ```
 
@@ -200,7 +205,8 @@ Rename column city to location;
 -- In the Employee table, insert a record where some fields are NULL, another record where all fields are filled without any NULL values, and a third record where some fields are filled, and others are left as Null.
 
 ```sql
--- insert into Employee(EmployeeID,Name,POsition,Department,Salary)values(5,'George Clark','Consultant',' ',' '),(7,'Noah Davis','Manager','HR',60000),(8,'Ava Miller','Consultant','IT',' ');
+--
+insert into Employee(EmployeeID,Name,POsition,Department,Salary)values(5,'George Clark','Consultant',' ',' '),(7,'Noah Davis','Manager','HR',60000),(8,'Ava Miller','Consultant','IT',' ');
 ```
 
 **Output:**
@@ -217,7 +223,8 @@ CustomerID as INTEGER should be a foreign key referencing Customers(CustomerID).
 
 
 ```sql
--- create table Orders(
+--
+create table Orders(
 OrderID INTEGER Primary Key,
 OrderDate DATE Not Null,
 CustomerID INTEGER,
@@ -239,7 +246,8 @@ email as TEXT.
 phone as TEXT and not NULL with a check constraint to ensure the length of phone is at least 10 characters.
 
 ```sql
--- create table contacts(
+--
+ create table contacts(
 contact_id INTEGER Primary Key,
 first_name TEXT Not NUll,
 last_name TEXT Not Null,
@@ -274,7 +282,8 @@ DepartmentName as TEXT should be unique and not NULL.
 Location as TEX
 
 ```sql
--- create table Department(
+--
+ create table Department(
 DepartmentID INTEGER Primary Key,
 DepartmentName TEXT unique Not Null,
 Location TEXT);
