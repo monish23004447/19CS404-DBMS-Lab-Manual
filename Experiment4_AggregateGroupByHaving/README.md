@@ -38,123 +38,164 @@ HAVING condition;
 
 **Question 1**
 --
--- Paste Question 1 here
+-- How many appointments are scheduled for each patient?
 
 ```sql
--- Paste your SQL code below for Question 1
+--
+select PatientID, count(*) as TotalAppointments
+from Appointments
+group by PatientID;
 ```
 
 **Output:**
 
-![Output1](output.png)
+![image](https://github.com/user-attachments/assets/fc36bbc7-aa2d-468a-a521-b0a3ba667c48)
 
 **Question 2**
 ---
--- Paste Question 2 here
-
+-- How many patients are covered by each insurance company?
 ```sql
--- Paste your SQL code below for Question 2
+--
+select InsuranceCompany, count(distinct PatientID) as TotalPatients
+from Insurance
+group by InsuranceCompany;
 ```
 
 **Output:**
 
-![Output2](output.png)
+![image](https://github.com/user-attachments/assets/19ec6ff2-04c9-4080-8878-c56a78d6bdea)
+
 
 **Question 3**
 ---
--- Paste Question 3 here
+-- How many prescriptions were written for each medication?
 
 ```sql
--- Paste your SQL code below for Question 3
+--
+select Medication, count(*) as TotalPrescriptions
+from prescriptions
+group by Medication;
 ```
 
 **Output:**
 
-![Output3](output.png)
+![image](https://github.com/user-attachments/assets/f9c4780f-1e1b-4364-abe0-dddbcfde23d6)
 
 **Question 4**
 ---
--- Paste Question 4 here
+-- Write a SQL query to find the average length of email addresses (in characters):
 
 ```sql
--- Paste your SQL code below for Question 4
+--
+select avg(length(email)) as avg_email_length
+from customer;
 ```
 
 **Output:**
 
-![Output4](output.png)
+![image](https://github.com/user-attachments/assets/03dfcfa2-7570-473a-93db-dc83ef07aad0)
+
 
 **Question 5**
 ---
--- Paste Question 5 here
-
+-- 
+Write a SQL query to Calculate the average email length (in characters) for people who lives in Mumbai city
 ```sql
--- Paste your SQL code below for Question 5
+--
+select avg(length(email)) as avg_email_length_below_30
+from customer
+where city='Mumbai';
 ```
 
 **Output:**
 
-![Output5](output.png)
+![image](https://github.com/user-attachments/assets/d17f3292-5973-41e0-bf4a-28e9666f41b8)
+
 
 **Question 6**
 ---
--- Paste Question 6 here
+-- Write a SQL query to count the number of customers. Return number of customers.
 
 ```sql
--- Paste your SQL code below for Question 6
+--
+select count(*) as COUNT
+from customer;
 ```
 
 **Output:**
 
-![Output6](output.png)
+![image](https://github.com/user-attachments/assets/90f6f025-9c96-4065-8c6e-c3e7e4d0926f)
+
 
 **Question 7**
 ---
--- Paste Question 7 here
+-- 
+Write a SQL query to  find the average salary of all employees?
+
 
 ```sql
--- Paste your SQL code below for Question 7
+--
+select avg(income) as Average_Salary
+from employee;
 ```
 
 **Output:**
+![image](https://github.com/user-attachments/assets/540be69d-c622-4b62-8ca9-701184dc338a)
 
-![Output7](output.png)
+
 
 **Question 8**
 ---
--- Paste Question 8 here
-
+-- 
+Write the SQL query to find how many patients have more than 3 medical records?.
 ```sql
--- Paste your SQL code below for Question 8
+--
+select PatientID, count(*) as TotalRecords
+from MedicalRecords
+group by PatientID
+having count(*) > 3;
 ```
 
 **Output:**
 
-![Output8](output.png)
+![image](https://github.com/user-attachments/assets/ecbacda7-1888-4da4-9e69-51da42252bd9)
+
 
 **Question 9**
 ---
--- Paste Question 9 here
-
+-- 
+Write the SQL query that achieves the selection of product names and the maximum price for each category from the "products" table, and includes only those products where the maximum price is greater than 15.
 ```sql
--- Paste your SQL code below for Question 9
+--
+select p.category_id, p.product_name, t.Price
+from products p
+join(
+select category_id, max(Price) as Price
+from products
+group by category_id
+having max(Price) > 15)
+as t on p.category_id=t.category_id and p.Price=t.Price;
 ```
 
 **Output:**
+![image](https://github.com/user-attachments/assets/3adbaec3-71e2-4034-bf44-1f5c8f9857b2)
 
-![Output9](output.png)
 
 **Question 10**
 ---
--- Paste Question 10 here
-
+-- 
+Write a SQL query to return the total number of rows in the 'customer' table where the city is not Noida.
 ```sql
--- Paste your SQL code below for Question 10
+--
+select count(*) as COUNT
+from customer
+where city!="Noida";
 ```
 
 **Output:**
 
-![Output10](output.png)
+![Uploading image.png…]()
+
 
 
 ## RESULT
