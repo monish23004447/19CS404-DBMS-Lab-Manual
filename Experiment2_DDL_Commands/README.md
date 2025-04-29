@@ -265,7 +265,8 @@ phone TEXT Not Null check(length(phone)>=10));
 --nsert a customer with CustomerID 301, Name Michael Jordan, Address 123 Maple St, City Chicago, and ZipCode 60616 into the Customers table.
 
 ```sql
--- insert into Customers(CustomerID,Name,Address,City,ZipCode)values(301,'Michael Jordan','123 Maple St','Chicago',60616);
+--
+insert into Customers(CustomerID,Name,Address,City,ZipCode)values(301,'Michael Jordan','123 Maple St','Chicago',60616);
 ```
 
 **Output:**
