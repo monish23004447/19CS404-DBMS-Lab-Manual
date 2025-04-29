@@ -38,123 +38,206 @@ DROP VIEW view_name;
 
 **Question 1**
 --
--- Paste Question 1 here
+-- From the following tables, write a SQL query to find all the orders issued by the salesman 'Paul Adam'. Return ord_no, purch_amt, ord_date, customer_id and salesman_id.
+
+salesman table
 
 ```sql
--- Paste your SQL code below for Question 1
+--
+SELECT ord_no, purch_amt, ord_date, customer_id, salesman_id
+FROM Orders
+WHERE salesman_id = (
+    SELECT salesman_id
+    FROM Salesman
+    WHERE name = 'Paul Adam'
+);
+
 ```
 
 **Output:**
 
-![Output1](output.png)
+![image](https://github.com/user-attachments/assets/509162b1-2ecc-4e89-ad17-496bd4607a38)
+
 
 **Question 2**
 ---
--- Paste Question 2 here
-
+-- 
+Write a SQL query to retrieve all columns from the CUSTOMERS table for customers whose AGE is LESS than $30
 ```sql
--- Paste your SQL code below for Question 2
+--
+SELECT *
+FROM CUSTOMERS
+WHERE AGE < 30;
+
 ```
 
 **Output:**
 
-![Output2](output.png)
+![image](https://github.com/user-attachments/assets/7e313fb0-07e5-46b3-a239-0ee13bb2649b)
+
 
 **Question 3**
 ---
--- Paste Question 3 here
-
+--
+Write a SQL query to List departments with names longer than the average length
 ```sql
--- Paste your SQL code below for Question 3
+--
+SELECT 
+    department_id AS depar, 
+    department_name
+FROM 
+    Departments
+WHERE 
+    LENGTH(department_name) > (
+        SELECT AVG(LENGTH(department_name)) FROM Departments
+    );
+
 ```
 
 **Output:**
 
-![Output3](output.png)
+![image](https://github.com/user-attachments/assets/ee83ff18-13e8-4bf6-84c4-af8285fb94c9)
+
 
 **Question 4**
 ---
--- Paste Question 4 here
-
+--
+Write a SQL query that retrieve all the columns from the table "Grades", where the grade is equal to the maximum grade achieved in each subject.
 ```sql
--- Paste your SQL code below for Question 4
+--
+SELECT *
+FROM Grades g
+WHERE grade = (
+    SELECT MAX(grade)
+    FROM Grades
+    WHERE subject = g.subject
+);
+
 ```
 
 **Output:**
 
-![Output4](output.png)
+![image](https://github.com/user-attachments/assets/ed9615a8-b1f8-4a0f-bee6-2c196c5860ea)
+
 
 **Question 5**
 ---
--- Paste Question 5 here
+-- From the following tables write a SQL query to count the number of customers with grades above the average in New York City. Return grade and count
 
 ```sql
--- Paste your SQL code below for Question 5
+--
+SELECT grade, COUNT(*)
+FROM customer
+GROUP BY grade
+HAVING grade >
+    (SELECT AVG(grade)
+     FROM customer
+     WHERE city = 'New York');
 ```
 
 **Output:**
 
-![Output5](output.png)
+![image](https://github.com/user-attachments/assets/9fe8c8cc-bc45-4fd9-9fab-8d0995a687ba)
+
 
 **Question 6**
 ---
--- Paste Question 6 here
-
+--
+From the following tables, write a SQL query to determine the commission of the salespeople in Paris. Return commission.
 ```sql
--- Paste your SQL code below for Question 6
+--
+SELECT commission 
+FROM salesman 
+WHERE salesman_id IN 
+(SELECT salesman_id FROM customer WHERE city = 'Paris');
+
 ```
 
 **Output:**
 
-![Output6](output.png)
+![image](https://github.com/user-attachments/assets/c78010d6-7580-4068-91b6-df2feef9341a)
+
 
 **Question 7**
 ---
--- Paste Question 7 here
-
+-- 
+Write a SQL query that retrieves the all the columns from the Table Grades, where the grade is equal to the minimum grade achieved in each subject.
 ```sql
--- Paste your SQL code below for Question 7
+--
+SELECT *
+FROM Grades g
+WHERE grade = (
+    SELECT MIN(grade)
+    FROM Grades
+    WHERE subject = g.subject
+);
 ```
 
 **Output:**
+![image](https://github.com/user-attachments/assets/20560466-dbe5-453f-8d51-61be13b7fef9)
 
-![Output7](output.png)
 
 **Question 8**
 ---
--- Paste Question 8 here
-
+-- 
+Write a SQL query to Retrieve the names of customers who have a phone number that is not shared with any other customer.
 ```sql
--- Paste your SQL code below for Question 8
+--
+SELECT name
+FROM customer c
+WHERE phone IN (
+    SELECT phone
+    FROM customer
+    GROUP BY phone
+    HAVING COUNT(phone) = 1
+);
+
 ```
 
 **Output:**
 
-![Output8](output.png)
+![image](https://github.com/user-attachments/assets/50d5755d-73b4-458e-8815-255010084c50)
+
 
 **Question 9**
 ---
--- Paste Question 9 here
+-- Write a SQL query that retrieves the names of students and their corresponding grades, where the grade is equal to the maximum grade achieved in each subject.
 
 ```sql
--- Paste your SQL code below for Question 9
+--
+SELECT 
+    student_name, 
+    grade
+FROM 
+    GRADES g
+WHERE 
+    grade = (
+        SELECT MAX(grade)
+        FROM GRADES
+        WHERE subject = g.subject
+    );
+
 ```
 
 **Output:**
 
-![Output9](output.png)
+![image](https://github.com/user-attachments/assets/8da84011-e4a8-40bc-9898-61d85e033617)
+
 
 **Question 10**
 ---
--- Paste Question 10 here
-
+--
+Write a SQL query to retrieve all columns from the CUSTOMERS table for customers whose salary is greater than $4500.
 ```sql
--- Paste your SQL code below for Question 10
+--
+select ID,NAME,AGE,ADDRESS,SALARY
+from CUSTOMERS
+where salary>4500;
 ```
 
 **Output:**
 
-![Output10](output.png)
+![image](https://github.com/user-attachments/assets/d09513eb-723b-4adc-be66-fe65b8acddab)
 
 
 ## RESULT
