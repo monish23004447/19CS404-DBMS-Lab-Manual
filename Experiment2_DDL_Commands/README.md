@@ -105,123 +105,185 @@ CREATE TABLE Table_Name (
 
 **Question 1**
 --
--- Paste Question 1 here
+-- Insert all employees from Former_employees into Employee
+
+Table attributes are EmployeeID, Name, Department, Salary
 
 ```sql
--- Paste your SQL code below for Question 1
+-- insert into Employee(EmployeeID,Name,Department,Salary)
+select EmployeeID,Name,Department,Salary
+from Former_employees;
 ```
 
 **Output:**
 
-![Output1](output.png)
+![image](https://github.com/user-attachments/assets/9d7d7f66-b74e-4693-9f00-74b6431ca403)
+
 
 **Question 2**
 ---
--- Paste Question 2 here
+-- Write a SQL Query  to add attribute Date_of_joining as Date and rename the attribute job_title as Designation in the table 'Employees'
 
 ```sql
--- Paste your SQL code below for Question 2
+-- Alter table Employees
+add column Date_of_joining Date;
+Alter table Employees
+rename column job_title to Designation;
 ```
 
 **Output:**
 
-![Output2](output.png)
+![image](https://github.com/user-attachments/assets/abc35dc5-f543-4b51-8b74-08f58b58fba3)
+
 
 **Question 3**
 ---
--- Paste Question 3 here
+-- Create a table named Locations with the following columns:
+
+LocationID as INTEGER
+LocationName as TEXT
+Address as TEXT
+
 
 ```sql
--- Paste your SQL code below for Question 3
+-- create table Locations(
+LocationID INTEGER,
+LocationName TEXT,
+Address TEXT);
 ```
 
 **Output:**
 
-![Output3](output.png)
+![image](https://github.com/user-attachments/assets/84eacaa0-a3c3-414b-b424-b8b0359391f0)
+
 
 **Question 4**
 ---
--- Paste Question 4 here
+--Create a table named Shipments with the following constraints:
+ShipmentID as INTEGER should be the primary key.
+ShipmentDate as DATE.
+SupplierID as INTEGER should be a foreign key referencing Suppliers(SupplierID).
+OrderID as INTEGER should be a foreign key referencing Orders(OrderID).
+
 
 ```sql
--- Paste your SQL code below for Question 4
+-- create table Shipments(
+ShipmentID INTEGER Primary Key,
+ShipmentDate DATE,
+SupplierID INTEGER,
+OrderID INTEGER,
+foreign key (SupplierID) references Suppliers(SupplierID),
+foreign key (OrderID) references Orders(OrderID));
 ```
 
 **Output:**
 
-![Output4](output.png)
+![image](https://github.com/user-attachments/assets/82695b04-2ba9-45ad-8143-f5ae5a759c2b)
+
 
 **Question 5**
 ---
--- Paste Question 5 here
+-- Write a SQL query to Rename the "city" column to "location" in the "customer" table.
 
 ```sql
--- Paste your SQL code below for Question 5
+-- Alter table customer
+Rename column city to location;
 ```
 
 **Output:**
 
-![Output5](output.png)
+![image](https://github.com/user-attachments/assets/c53dd968-94c0-4431-924d-8dbdf5c57d47)
+
 
 **Question 6**
 ---
--- Paste Question 6 here
+-- In the Employee table, insert a record where some fields are NULL, another record where all fields are filled without any NULL values, and a third record where some fields are filled, and others are left as Null.
 
 ```sql
--- Paste your SQL code below for Question 6
+-- insert into Employee(EmployeeID,Name,POsition,Department,Salary)values(5,'George Clark','Consultant',' ',' '),(7,'Noah Davis','Manager','HR',60000),(8,'Ava Miller','Consultant','IT',' ');
 ```
 
 **Output:**
 
-![Output6](output.png)
+![image](https://github.com/user-attachments/assets/77d907fb-8c4b-48e5-a726-4212f43c684e)
+
 
 **Question 7**
 ---
--- Paste Question 7 here
+-- Create a table named Orders with the following constraints:
+OrderID as INTEGER should be the primary key.
+OrderDate as DATE should be not NULL.
+CustomerID as INTEGER should be a foreign key referencing Customers(CustomerID).
+
 
 ```sql
--- Paste your SQL code below for Question 7
+-- create table Orders(
+OrderID INTEGER Primary Key,
+OrderDate DATE Not Null,
+CustomerID INTEGER,
+Foreign key (CustomerID) references Customers(CustomerID));
 ```
 
 **Output:**
 
-![Output7](output.png)
+![image](https://github.com/user-attachments/assets/aeb1bd48-388a-44cb-bd4a-6fd1e4d03276)
+
 
 **Question 8**
 ---
--- Paste Question 8 here
+-- Create a new table named contacts with the following specifications:
+contact_id as INTEGER and primary key.
+first_name as TEXT and not NULL.
+last_name as TEXT and not NULL.
+email as TEXT.
+phone as TEXT and not NULL with a check constraint to ensure the length of phone is at least 10 characters.
 
 ```sql
--- Paste your SQL code below for Question 8
+-- create table contacts(
+contact_id INTEGER Primary Key,
+first_name TEXT Not NUll,
+last_name TEXT Not Null,
+email TEXT,
+phone TEXT Not Null check(length(phone)>=10));
 ```
 
 **Output:**
 
-![Output8](output.png)
+![image](https://github.com/user-attachments/assets/f9d93ff7-fd24-4082-b35f-fe023a0c7827)
+
 
 **Question 9**
 ---
--- Paste Question 9 here
+--nsert a customer with CustomerID 301, Name Michael Jordan, Address 123 Maple St, City Chicago, and ZipCode 60616 into the Customers table.
 
 ```sql
--- Paste your SQL code below for Question 9
+-- insert into Customers(CustomerID,Name,Address,City,ZipCode)values(301,'Michael Jordan','123 Maple St','Chicago',60616);
 ```
 
 **Output:**
 
-![Output9](output.png)
+![image](https://github.com/user-attachments/assets/ad4ff452-b879-4d2c-861e-4f66aed269e5)
+
+
 
 **Question 10**
 ---
--- Paste Question 10 here
+-- Create a table named Department with the following constraints:
+DepartmentID as INTEGER should be the primary key.
+DepartmentName as TEXT should be unique and not NULL.
+Location as TEX
 
 ```sql
--- Paste your SQL code below for Question 10
+-- create table Department(
+DepartmentID INTEGER Primary Key,
+DepartmentName TEXT unique Not Null,
+Location TEXT);
 ```
 
 **Output:**
 
-![Output10](output.png)
+![image](https://github.com/user-attachments/assets/5afe1275-9ce4-4a8c-8eb8-3b241ec7d46d)
+
 
 
 ## RESULT
