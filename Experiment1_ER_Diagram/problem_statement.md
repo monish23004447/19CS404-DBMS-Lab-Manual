@@ -45,28 +45,69 @@ Design a database for patient management, appointments, medical records, and bil
    - Why you chose the entities and relationships.
    - How you modeled prerequisites or billing.
 
-# ER Diagram Submission - Student Name
+# ER Diagram Submission - Madhumitha.Y-212222020014
 
 ## Scenario Chosen:
-University / Hospital (choose one)
+ Hospital 
 
 ## ER Diagram:
-![ER Diagram](er_diagram.png)
+file:///C:/Users/madhu/Downloads/Madhumitha.Y_HospitalERDiagram.pdf
 
 ## Entities and Attributes:
-- Entity1: Attributes
-- Entity2: Attributes
+...
+- DEPARTMENT: dept_id, dept_name, dept_head
+
+- DOCTOR: doctor_id, name, specialization, phone_no, email_id, work_schedule
+
+- PATIENT: patient_id, name, dob, gender, phone_no, email
+
+- APPOINTMENT: appointment_id, appointment_time&date, reason_for_visit
+
+- MEDICAL RECORDS: medical_record_id, diagnosis, treatment, result
 ...
 
 ## Relationships and Constraints:
-- Relationship1 (Cardinality, Participation)
-- Relationship2 (Cardinality, Participation)
+...
+- DEPARTMENT–DOCTOR (have):
+
+- Cardinality: One-to-Many (One department has many doctors)
+
+- Participation: Total on Doctor (Each doctor belongs to a department)
+
+- DOCTOR–APPOINTMENT (have):
+
+- Cardinality: One-to-Many (One doctor can have many appointments)
+
+- Participation: Partial on Doctor
+
+- PATIENT–APPOINTMENT (have):
+
+- Cardinality: One-to-Many (One patient can book multiple appointments)
+
+- Participation: Total on Appointment
+
+- APPOINTMENT–MEDICAL RECORDS (have):
+
+- Cardinality: One-to-One (Each appointment has one medical record)
+
+- Participation: Total on both
 ...
 
 ## Extension (Prerequisite / Billing):
-- Explain how you modeled prerequisites or billing.
+...
+- Prerequisite: Not explicitly modeled in the diagram. Could be included as an attribute in APPOINTMENT or a separate entity linking PATIENT to required preliminary checks or documentation.
+- Billing: Also not modeled. Could be an additional entity (e.g., BILL) related to APPOINTMENT or MEDICAL RECORDS with attributes like billing_id, cost, payment_status.
+...
 
 ## Design Choices:
-Brief explanation of why you chose certain entities, relationships, and assumptions
+- Entity separation: Each core component (Doctor, Patient, Department, etc.) is represented as a distinct entity for clarity and normalization.
+
+- One-to-many relationships: Realistically mirrors how healthcare systems function (e.g., one doctor having many appointments).
+
+- Total participation constraints: Applied where involvement is mandatory (e.g., each appointment must link to a patient and doctor).
+
+- Normalization: Avoids data redundancy, separating work schedule, treatment details, and appointment metadata into respective entities or attributes.
 
 ## RESULT
+The ER diagram organizes healthcare data to efficiently manage doctors, patients, appointments, and medical records with clear relationships.
+
