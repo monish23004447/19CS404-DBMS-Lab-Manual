@@ -36,7 +36,8 @@ END;
     4.Use DBMS_OUTPUT.PUT_LINE to display the result.
     5.Call the procedure with a number as input.
   
-```PL/SQL query
+```
+PL/SQL query
 CREATE OR REPLACE PROCEDURE FIND_SQUARE (num IN NUMBER) IS square NUMBER;
  BEGIN
   square := num * num;
