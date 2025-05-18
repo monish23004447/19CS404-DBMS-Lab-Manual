@@ -35,9 +35,9 @@ END;
     3.Inside the procedure, compute the square of the input number.
     4.Use DBMS_OUTPUT.PUT_LINE to display the result.
     5.Call the procedure with a number as input.
-  
+
+PL/SQL
 ```
-PL/SQL query
 CREATE OR REPLACE PROCEDURE FIND_SQUARE (num IN NUMBER) IS square NUMBER;
  BEGIN
   square := num * num;
@@ -64,6 +64,7 @@ Output:
 3.Use a loop to calculate the factorial.
 4.Return the result using the RETURN statement.
 5.Call the function using a SELECT statement or in an anonymous block.
+
 PL/SQL query
 ```
 CREATE OR REPLACE FUNCTION GET_FACTORIAL(n IN NUMBER)
@@ -107,6 +108,7 @@ Output:
 2.Accept an input parameter.
 3.Use the MOD function to check if the number is divisible by 2.
 4.Display whether it is Even or Odd using DBMS_OUTPUT.PUT_LINE
+
 PL/SQL query
 ```
 CREATE OR REPLACE PROCEDURE check_even_odd(num IN NUMBER) IS
@@ -138,6 +140,7 @@ Output:
 3.Use a loop to reverse the digits of the number.
 4.Return the reversed number.
 5.Call the function and display the output.
+
 PL/SQL query
 ```
 CREATE OR REPLACE FUNCTION reverse_number(n IN NUMBER)
@@ -178,6 +181,7 @@ Output:
 2.Accept an input number.
 3.Use a loop from 1 to 10 to multiply the input number.
 4.Display the multiplication results using DBMS_OUTPUT.PUT_LINE.
+
 PL/SQL query
 ```
 CREATE OR REPLACE PROCEDURE print_table(num IN NUMBER) IS
