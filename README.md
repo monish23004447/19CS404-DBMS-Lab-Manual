@@ -45,7 +45,7 @@ Design a database for patient management, appointments, medical records, and bil
    - Why you chose the entities and relationships.
    - How you modeled prerequisites or billing.
 
-# ER Diagram Submission - Madhumitha.Y-212222020014
+# ER Diagram Submission - Monishkumar.v - 212223040116
 
 ## Scenario Chosen:
  Hospital 
