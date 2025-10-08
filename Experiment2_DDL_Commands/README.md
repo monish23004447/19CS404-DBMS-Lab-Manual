@@ -105,194 +105,328 @@ CREATE TABLE Table_Name (
 
 **Question 1**
 --
--- Insert all employees from Former_employees into Employee
+Create a table named Products with the following constraints:
+ProductID as INTEGER should be the primary key.
+ProductName as TEXT should be unique and not NULL.
+Price as REAL should be greater than 0.
+StockQuantity as INTEGER should be non-negative.
+For example:
 
-Table attributes are EmployeeID, Name, Department, Salary
+Test	Result
+INSERT INTO Products (ProductID, ProductName, Price, StockQuantity) VALUES (1, 'Laptop', 999.99, 10);
+select * from Products;
+ProductID   ProductName  Price       StockQuantity
+----------  -----------  ----------  -------------
+1           Laptop       999.99      10
 
 ```sql
---
- insert into Employee(EmployeeID,Name,Department,Salary)
-select EmployeeID,Name,Department,Salary
-from Former_employees;
+CREATE TABLE Products (
+    ProductID INTEGER PRIMARY KEY,
+    ProductName TEXT UNIQUE NOT NULL,
+    Price REAL CHECK (Price > 0),
+    StockQuantity INTEGER CHECK (StockQuantity >= 0)
+);
+
 ```
 
 **Output:**
 
-![image](https://github.com/user-attachments/assets/9d7d7f66-b74e-4693-9f00-74b6431ca403)
+<img width="1744" height="262" alt="image" src="https://github.com/user-attachments/assets/1b1b966c-5984-42ea-b039-5890be6abe7b" />
 
 
 **Question 2**
 ---
--- Write a SQL Query  to add attribute Date_of_joining as Date and rename the attribute job_title as Designation in the table 'Employees'
+In the Employee table, insert a record where some fields are NULL, another record where all fields are filled without any NULL values, and a third record where some fields are filled, and others are left as NULL.
+
+EmployeeID  Name          Position    Department  Salary
+----------  ------------  ----------  ----------  ----------
+5           George Clark  Consultant
+7           Noah Davis    Manager     HR          60000
+8           Ava Miller    Consultant  IT
+ 
+
+For example:
+
+Test	Result
+SELECT * FROM Employee;
+EmployeeID  Name          Position    Department  Salary
+----------  ------------  ----------  ----------  ----------
+5           George Clark  Consultant
+7           Noah Davis    Manager     HR          60000
+8           Ava Miller    Consultant  IT
+
 
 ```sql
---
- Alter table Employees
-add column Date_of_joining Date;
-Alter table Employees
-rename column job_title to Designation;
+INSERT INTO Employee (EmployeeID, Name, Position) 
+VALUES (5, 'George Clark', 'Consultant');
+
+INSERT INTO Employee (EmployeeID, Name, Position, Department, Salary) 
+VALUES (7, 'Noah Davis', 'Manager', 'HR', 60000);
+
+INSERT INTO Employee (EmployeeID, Name, Position, Department) 
+VALUES (8, 'Ava Miller', 'Consultant', 'IT');
 ```
 
 **Output:**
-
-![image](https://github.com/user-attachments/assets/abc35dc5-f543-4b51-8b74-08f58b58fba3)
+<img width="1462" height="341" alt="image" src="https://github.com/user-attachments/assets/e155ec90-8147-4c56-94be-e294e07ee051" />
 
 
 **Question 3**
 ---
--- Create a table named Locations with the following columns:
+Insert all products from Discontinued_products into Products.
 
-LocationID as INTEGER
-LocationName as TEXT
-Address as TEXT
+Table attributes are ProductID, ProductName, Price, Stock
+
+For example:
+
+Test	Result
+select * from Products;
+ProductID   ProductName     Price       Stock
+----------  --------------  ----------  ----------
+101         Old Smartphone  199.99      0
+102         Vintage Laptop  399.99      10
+103         Classic Tablet  149.99      5
 
 
 ```sql
---
- create table Locations(
-LocationID INTEGER,
-LocationName TEXT,
-Address TEXT);
+INSERT INTO Products (ProductID, ProductName, Price, Stock)
+SELECT ProductID, ProductName, Price, Stock
+FROM Discontinued_products;
 ```
 
 **Output:**
 
-![image](https://github.com/user-attachments/assets/84eacaa0-a3c3-414b-b424-b8b0359391f0)
+<img width="1306" height="345" alt="image" src="https://github.com/user-attachments/assets/0080ecbd-1680-4cb7-86ea-0f77c9ab5fde" />
 
 
 **Question 4**
 ---
---Create a table named Shipments with the following constraints:
+Create a table named Shipments with the following constraints:
 ShipmentID as INTEGER should be the primary key.
 ShipmentDate as DATE.
 SupplierID as INTEGER should be a foreign key referencing Suppliers(SupplierID).
 OrderID as INTEGER should be a foreign key referencing Orders(OrderID).
+For example:
+
+Test	Result
+INSERT INTO Shipments (ShipmentID, ShipmentDate, SupplierID, OrderID) VALUES (2, '2024-08-03', 99, 1);
+Error: FOREIGN KEY constraint failed
 
 
 ```sql
---
-create table Shipments(
-ShipmentID INTEGER Primary Key,
-ShipmentDate DATE,
-SupplierID INTEGER,
-OrderID INTEGER,
-foreign key (SupplierID) references Suppliers(SupplierID),
-foreign key (OrderID) references Orders(OrderID));
+CREATE TABLE Shipments (
+    ShipmentID INTEGER PRIMARY KEY,
+    ShipmentDate DATE,
+    SupplierID INTEGER,
+    OrderID INTEGER,
+    FOREIGN KEY (SupplierID) REFERENCES Suppliers(SupplierID),
+    FOREIGN KEY (OrderID) REFERENCES Orders(OrderID)
+);
 ```
 
 **Output:**
-
-![image](https://github.com/user-attachments/assets/82695b04-2ba9-45ad-8143-f5ae5a759c2b)
+<img width="1809" height="316" alt="image" src="https://github.com/user-attachments/assets/f3ee2cf6-190c-4b36-9022-b466b587848b" />
 
 
 **Question 5**
 ---
--- Write a SQL query to Rename the "city" column to "location" in the "customer" table.
+Create a table named Products with the following columns:
+
+ProductID as INTEGER
+ProductName as TEXT
+Price as REAL
+Stock as INTEGER
+For example:
+
+Test	Result
+pragma table_info('Products');
+cid   name        type        notnull     dflt_value  pk
+----  ----------  ----------  ----------  ----------  ----------
+0     ProductID   INTEGER     0                       0
+1     ProductNam  TEXT        0                       0
+2     Price       REAL        0                       0
+3     Stock       INTEGER     0                       0
+
 
 ```sql
---
-Alter table customer
-Rename column city to location;
+CREATE TABLE Products (
+    ProductID INTEGER,
+    ProductName TEXT,
+    Price REAL,
+    Stock INTEGER
+);
 ```
 
 **Output:**
-
-![image](https://github.com/user-attachments/assets/c53dd968-94c0-4431-924d-8dbdf5c57d47)
+<img width="1753" height="402" alt="image" src="https://github.com/user-attachments/assets/244aff04-6598-4252-977d-140c6693f139" />
 
 
 **Question 6**
 ---
--- In the Employee table, insert a record where some fields are NULL, another record where all fields are filled without any NULL values, and a third record where some fields are filled, and others are left as Null.
+Create a new table named item with the following specifications and constraints:
+item_id as TEXT and as primary key.
+item_desc as TEXT.
+rate as INTEGER.
+icom_id as TEXT with a length of 4.
+icom_id is a foreign key referencing com_id in the company table.
+The foreign key should set NULL on updates and deletes.
+item_desc and rate should not accept NULL.
+For example:
+
+Test	Result
+INSERT INTO item VALUES("ITM5","Charlie Gold",700,"COM4");
+UPDATE company SET com_id='COM5' WHERE com_id='COM4';
+SELECT * FROM item;
+item_id     item_desc     rate        icom_id
+----------  ------------  ----------  ----------
+ITM5        Charlie Gold  700
+
 
 ```sql
---
-insert into Employee(EmployeeID,Name,POsition,Department,Salary)values(5,'George Clark','Consultant',' ',' '),(7,'Noah Davis','Manager','HR',60000),(8,'Ava Miller','Consultant','IT',' ');
+CREATE TABLE item (
+    item_id TEXT PRIMARY KEY,
+    item_desc TEXT NOT NULL,
+    rate INTEGER NOT NULL,
+    icom_id TEXT CHECK (LENGTH(icom_id) = 4),
+    FOREIGN KEY (icom_id) REFERENCES company(com_id)
+    ON UPDATE SET NULL
+    ON DELETE SET NULL
+);
 ```
 
 **Output:**
 
-![image](https://github.com/user-attachments/assets/77d907fb-8c4b-48e5-a726-4212f43c684e)
+<img width="1731" height="441" alt="image" src="https://github.com/user-attachments/assets/348adba4-cd44-4407-8ed2-70087a0b330c" />
 
 
 **Question 7**
 ---
--- Create a table named Orders with the following constraints:
-OrderID as INTEGER should be the primary key.
-OrderDate as DATE should be not NULL.
-CustomerID as INTEGER should be a foreign key referencing Customers(CustomerID).
+Write an SQL query to add a new column salary of type INTEGER to the Employees table, with a CHECK constraint that ensures the value in this column is greater than 0.
 
+ 
+
+ 
+
+For example:
+
+Test	Result
+pragma table_info('employees');
+cid         name        type        notnull     dflt_value  pk
+----------  ----------  ----------  ----------  ----------  ----------
+0           id          INTEGER     0                       1
+1           name        TEXT        1                       0
+2           salary      INTEGER     0                       0
 
 ```sql
---
-create table Orders(
-OrderID INTEGER Primary Key,
-OrderDate DATE Not Null,
-CustomerID INTEGER,
-Foreign key (CustomerID) references Customers(CustomerID));
+ALTER TABLE Employees
+ADD COLUMN salary INTEGER CHECK (salary > 0);
 ```
 
 **Output:**
 
-![image](https://github.com/user-attachments/assets/aeb1bd48-388a-44cb-bd4a-6fd1e4d03276)
+<img width="1726" height="344" alt="image" src="https://github.com/user-attachments/assets/9d9b42ab-ba76-464b-9f71-26d10c2ec38d" />
 
 
 **Question 8**
 ---
--- Create a new table named contacts with the following specifications:
-contact_id as INTEGER and primary key.
-first_name as TEXT and not NULL.
-last_name as TEXT and not NULL.
-email as TEXT.
-phone as TEXT and not NULL with a check constraint to ensure the length of phone is at least 10 characters.
+Create a new table named products with the following specifications:
+product_id as INTEGER and primary key.
+product_name as TEXT and not NULL.
+list_price as DECIMAL (10, 2) and not NULL.
+discount as DECIMAL (10, 2) with a default value of 0 and not NULL.
+A CHECK constraint at the table level to ensure:
+list_price is greater than or equal to discount
+discount is greater than or equal to 0
+list_price is greater than or equal to 0
+For example:
+
+Test	Result
+INSERT INTO products (product_id, product_name, list_price) VALUES (2, 'Product B', 50.00);
+SELECT * FROM products;
+product_id  product_name  list_price  discount
+----------  ------------  ----------  ----------
+2           Product B     50          0
+
 
 ```sql
---
- create table contacts(
-contact_id INTEGER Primary Key,
-first_name TEXT Not NUll,
-last_name TEXT Not Null,
-email TEXT,
-phone TEXT Not Null check(length(phone)>=10));
+CREATE TABLE products (
+    product_id   INTEGER PRIMARY KEY,
+    product_name TEXT NOT NULL,
+    list_price   DECIMAL(10, 2) NOT NULL,
+    discount     DECIMAL(10, 2) NOT NULL DEFAULT 0,
+    CHECK (
+        list_price >= discount
+        AND discount >= 0
+        AND list_price >= 0
+    )
+);
 ```
 
 **Output:**
 
-![image](https://github.com/user-attachments/assets/f9d93ff7-fd24-4082-b35f-fe023a0c7827)
+<img width="1301" height="244" alt="image" src="https://github.com/user-attachments/assets/780980ca-12c5-450b-a025-56c57f1ee3a3" />
 
 
 **Question 9**
 ---
---nsert a customer with CustomerID 301, Name Michael Jordan, Address 123 Maple St, City Chicago, and ZipCode 60616 into the Customers table.
+Insert the below data into the Student_details table, allowing the Subject and MARKS columns to take their default values.
+
+RollNo      Name          Gender      
+----------  ------------  ----------  
+204         Samuel Black  M          
+
+Note: The Subject and MARKS columns will use their default values.
+ 
+For example:
+
+Test	Result
+SELECT RollNo, Name, Gender 
+FROM Student_details 
+WHERE RollNo = 204;
+
+
+RollNo      Name          Gender
+----------  ------------  ----------
+204         Samuel Black  M
 
 ```sql
---
-insert into Customers(CustomerID,Name,Address,City,ZipCode)values(301,'Michael Jordan','123 Maple St','Chicago',60616);
+INSERT INTO Student_details (RollNo, Name, Gender)
+VALUES (204, 'Samuel Black', 'M');
 ```
 
 **Output:**
-
-![image](https://github.com/user-attachments/assets/ad4ff452-b879-4d2c-861e-4f66aed269e5)
-
+<img width="1102" height="341" alt="image" src="https://github.com/user-attachments/assets/5a110147-6017-44e3-b6f3-4391fbe6ad26" />
 
 
 **Question 10**
 ---
--- Create a table named Department with the following constraints:
-DepartmentID as INTEGER should be the primary key.
-DepartmentName as TEXT should be unique and not NULL.
-Location as TEX
+Write a SQL Query  to Rename attribute "name" to "first_name"  and add mobilenumber as number ,DOB as Date,State as varchar(30) in the table Companies. 
+
+For example:
+
+Test	Result
+pragma table_info('Companies');
+cid         name        type        notnull     dflt_value  pk
+----------  ----------  ----------  ----------  ----------  ----------
+0           id          int         0                       0
+1           first_name  varchar(50  0                       0
+2           address     text        0                       0
+3           email       varchar(50  0                       0
+4           phone       varchar(10  0                       0
+5           mobilenumb  number      0                       0
+6           DOB         Date        0                       0
+7           State       varchar(30  0                       0
 
 ```sql
---
- create table Department(
-DepartmentID INTEGER Primary Key,
-DepartmentName TEXT unique Not Null,
-Location TEXT);
+ALTER TABLE Companies RENAME COLUMN name TO first_name;
+ALTER TABLE Companies ADD COLUMN mobilenumber number;
+ALTER TABLE Companies ADD COLUMN DOB Date;
+ALTER TABLE Companies ADD COLUMN State varchar(30);
 ```
 
 **Output:**
 
-![image](https://github.com/user-attachments/assets/5afe1275-9ce4-4a8c-8eb8-3b241ec7d46d)
+<img width="1541" height="409" alt="image" src="https://github.com/user-attachments/assets/185b3236-0556-4a5c-9009-611e1395cd71" />
 
 
 
